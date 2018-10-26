@@ -6,24 +6,28 @@ import CardFace from './cardFace/cardFace';
 class Card extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      card: this.props.card,
-      faceShowing: false
-    }
     this.handleClick = this.handleClick.bind(this);
   }
   
   render() {
     return (
       <div className='card' onClick={this.handleClick}>
-        { this.state.faceShowing ? < CardFace value={this.state.card}/> : < CardBack />}
+        {this.renderCard()}
       </div>
     )
   }
 
+  renderCard() {
+    if (this.props.card.showing || this.props.card.matched) {
+      return <CardFace value={this.props.card.value} />
+    }
+    else { 
+      return  < CardBack /> 
+    }
+  }
+
   handleClick() {
     this.props.handleClick(this.props.index);
-    this.setState({faceShowing: true});
   }
 }
 
