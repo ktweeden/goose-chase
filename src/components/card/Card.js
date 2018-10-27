@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './Card.css';
 import CardBack from './cardBack/cardBack';
 import CardFace from './cardFace/cardFace';
 
-class Card extends React.Component {
+class Card extends Component {
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this);
@@ -19,7 +19,7 @@ class Card extends React.Component {
 
   renderCard() {
     if (this.props.card.showing || this.props.card.matched) {
-      return <CardFace value={this.props.card.value} />
+      return <CardFace value={this.props.card.value} matched={this.props.card.matched}/>
     }
     else { 
       return  < CardBack /> 

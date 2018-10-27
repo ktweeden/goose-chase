@@ -1,0 +1,11 @@
+.header {
+  width: 100%;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.game-state {
+  color: gold;
+}

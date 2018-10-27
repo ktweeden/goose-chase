@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Card from '../card/Card';
 import './CardContainer.css'
 
-class CardContainer extends React.Component {
+class CardContainer extends Component {
 
   constructor(props) {
     super(props)
@@ -11,10 +11,11 @@ class CardContainer extends React.Component {
         { value: 3, showing: false, matched: false },
         { value: 1, showing: false, matched: false },
         { value: 3, showing: false, matched: false },
-        { value: 3, showing: false, matched: false },
-        { value: 3, showing: false, matched: false },
-        { value: 3, showing: false, matched: false }],
-      currentlyClicked: []
+        { value: 1, showing: false, matched: false },
+        { value: 4, showing: false, matched: false },
+        { value: 4, showing: false, matched: false }],
+      currentlyClicked: [],
+      gameWon: false
     }
 
     this.handleCardClick = this.handleCardClick.bind(this);
@@ -25,8 +26,10 @@ class CardContainer extends React.Component {
     });
 
     return (
-      <div className="container">
-        {cardNodes}
+      <div>
+        <div className="container">
+          {cardNodes}
+        </div>
       </div>
     );
   }
@@ -36,7 +39,7 @@ class CardContainer extends React.Component {
     const newClicked = this.state.currentlyClicked.concat(index);
 
     this.setState({ currentlyClicked: newClicked });
-    this.checkForMatches(newClicked)
+    this.checkForMatches(newClicked);
   }
 
   toggleCardShowing(index) {
@@ -65,6 +68,7 @@ class CardContainer extends React.Component {
     newGrid[currentlySelected[1]].matched = true;
     this.setState({cardGrid: newGrid});
     this.setState({currentlyClicked: []});
+    this.checkForWin();
   }
 
   noMatch(currentlySelected) {
@@ -74,6 +78,18 @@ class CardContainer extends React.Component {
       })
       this.setState({ currentlyClicked: [] })
     }, 1000)
+  }
+
+  checkForWin() {
+    let gameWon = true;
+    this.state.cardGrid.forEach((card) => {
+      if (!card.matched) {
+        gameWon = false;
+      }
+    })
+    if(gameWon) {
+      this.props.handleWin()
+    }
   }
 }
 export default CardContainer;

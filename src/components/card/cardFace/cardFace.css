@@ -1,8 +1,15 @@
-.card-face {
-  background-color: aqua;
+.face {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.guess {
+  background-color: aqua;
+}
+
+.matched {
+  background-color: blue;
 }
