@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import Card from '../card/Card';
-import './CardContainer.css'
+import './CardContainer.css';
+import alarmedGoose from '../../assets/alarmed-goose.jpg';
+import attackingGoose from '../../assets/attacking-goose.jpeg';
+import deliciousGoose from '../../assets/delicious-goose.jpg';
+import honkingGoose from '../../assets/honking-goose.jpg';
 
 class CardContainer extends Component {
 
@@ -9,20 +13,30 @@ class CardContainer extends Component {
     this.state = {
       cardGrid: [
         { value: 3, showing: false, matched: false },
-        { value: 1, showing: false, matched: false },
+        { value: 0, showing: false, matched: false },
         { value: 3, showing: false, matched: false },
         { value: 1, showing: false, matched: false },
-        { value: 4, showing: false, matched: false },
-        { value: 4, showing: false, matched: false }],
+        { value: 2, showing: false, matched: false },
+        { value: 1, showing: false, matched: false },
+        { value: 0, showing: false, matched: false },
+        { value: 2, showing: false, matched: false }],
       currentlyClicked: [],
-      gameWon: false
+      gameWon: false,
+      geese: [alarmedGoose, attackingGoose, deliciousGoose, honkingGoose]
     }
 
     this.handleCardClick = this.handleCardClick.bind(this);
   }
   render() {
     const cardNodes = this.state.cardGrid.map((card, index) => {
-      return <Card card={card} key={index} index={index} handleClick={this.handleCardClick} />
+      return (
+        <Card 
+          card={card} 
+          key={index} 
+          index={index} 
+          image={this.state.geese[card.value]}
+          handleClick={this.handleCardClick} />
+      )
     });
 
     return (

@@ -19,7 +19,7 @@ class Card extends Component {
 
   renderCard() {
     if (this.props.card.showing || this.props.card.matched) {
-      return <CardFace value={this.props.card.value} matched={this.props.card.matched}/>
+      return <CardFace image={this.props.image} matched={this.props.card.matched}/>
     }
     else { 
       return  < CardBack /> 

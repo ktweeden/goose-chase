@@ -6,10 +6,11 @@
   justify-content: center;
 }
 
-.guess {
-  background-color: aqua;
-}
-
 .matched {
   background-color: blue;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
 }
