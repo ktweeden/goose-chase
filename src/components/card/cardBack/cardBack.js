@@ -1,7 +1,7 @@
 import React from 'react'
 import './cardBack.css'
 
-const CardBack = function (props) {
+const CardBack = function () {
   return (
     <div className='card-back'>
       <p>A Card</p>

@@ -5,6 +5,8 @@ import alarmedGoose from '../../assets/alarmed-goose.jpg';
 import attackingGoose from '../../assets/attacking-goose.jpeg';
 import deliciousGoose from '../../assets/delicious-goose.jpg';
 import honkingGoose from '../../assets/honking-goose.jpg';
+import PropTypes from 'prop-types';
+
 
 class CardContainer extends Component {
 
@@ -21,7 +23,6 @@ class CardContainer extends Component {
         { value: 0, showing: false, matched: false },
         { value: 2, showing: false, matched: false }],
       currentlyClicked: [],
-      gameWon: false,
       geese: [alarmedGoose, attackingGoose, deliciousGoose, honkingGoose]
     }
 
@@ -105,5 +106,9 @@ class CardContainer extends Component {
       this.props.handleWin()
     }
   }
+}
+
+CardContainer.propTypes = {
+  handleWin: PropTypes.func
 }
 export default CardContainer;

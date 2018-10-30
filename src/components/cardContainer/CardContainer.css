@@ -1,9 +1,9 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 30vh 30vh;
+  grid-template-rows: 23vh 23vh;
+  grid-gap: 0 3rem;
 
-  grid-auto-rows: 30vh;
-  height: 100vh;
-  margin: 2rem 5rem;
+  grid-auto-rows: 23vh;
+  margin: 0 15rem;
 }
